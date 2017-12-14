@@ -17,6 +17,13 @@ syn region      jbVersion matchgroup=Delimiter start="(jbuild_version"rs=s+1 mat
 syn region      jbLibrary matchgroup=Delimiter start="(library"rs=s+1 matchgroup=Delimiter end=")" contains=jbLibraryOptions,jbStansa,jbUnknown
 syn region      jbLibraryOptions contained containedin=jbLibrary matchgroup=Delimiter start="(" matchgroup=Delimiter end=")" contains=jbLibraryOption,jbUnknown
 syn region      jbLibraryOption contained matchgroup=Delimiter start="("ms=s matchgroup=Delimiter end=")" contains=jbPublic_name,jbName,jbUnknown,jbSynopsis,jbLibraries,jbWrapped,jbFlags,jbModules
+syn region      jbExecutable matchgroup=Delimiter start="(executable"rs=s+1 matchgroup=Delimiter end=")" contains=jbExecutableOptions,jbStansa,jbUnknown
+syn region      jbExecutableOptions contained containedin=jbExecutable matchgroup=Delimiter start="(" matchgroup=Delimiter end=")" contains=jbExecutableOption,jbUnknown
+syn region      jbExecutableOption contained matchgroup=Delimiter start="("ms=s matchgroup=Delimiter end=")" contains=jbPublic_name,jbName,jbUnknown,jbSynopsis,jbLibraries,jbWrapped,jbFlags,jbModules
+syn region      jbExecutables matchgroup=Delimiter start="(executables"rs=s+1 matchgroup=Delimiter end=")" contains=jbExecutablesOptions,jbStansa,jbUnknown
+syn region      jbExecutablesOptions contained containedin=jbExecutables matchgroup=Delimiter start="(" matchgroup=Delimiter end=")" contains=jbExecutablesOption,jbUnknown
+syn region      jbExecutablesOption contained matchgroup=Delimiter start="("ms=s matchgroup=Delimiter end=")" contains=jbPublic_names,jbNames,jbUnknown,jbSynopsis,jbLibraries,jbWrapped,jbFlags,jbModules
+
 syn region      jbList contained matchgroup=Delimiter start="(" matchgroup=Delimiter end=")" contains=jbToken,jbUnknown
 syn region      jbFlagList contained matchgroup=Delimiter start="(" matchgroup=Delimiter end=")" contains=jbFlag,jbOcamlFlag,jbToken,jbUnknown,jbIncludeList
 syn region      jbIncludeList contained matchgroup=Delimiter start="("ms=s matchgroup=Delimiter end=")" contains=jbInclude,jbUnknown
@@ -41,6 +48,8 @@ syn match       jbOcamlFlag "-[0-9A-Za-z_-]\+"hs=s+1
 
 syn match	jbName contained ,(\@<=name, nextgroup=jbToken skipwhite
 syn match	jbPublic_name contained ,(\@<=public_name, nextgroup=jbToken skipwhite
+syn match	jbNames contained ,(\@<=names, nextgroup=jbList skipwhite
+syn match	jbPublic_names contained ,(\@<=public_names, nextgroup=jbList skipwhite
 syn match	jbSynopsis contained ,(\@<=synopsis, nextgroup=jbString skipwhite
 syn match	jbLibraries contained ,(\@<=libraries, nextgroup=jbList skipwhite
 syn match	jbLibraries contained ,(\@<=c_names, nextgroup=jbList skipwhite
@@ -58,11 +67,13 @@ syn sync match matchPlace grouphere NONE "^[^ \t]"
 
 hi def link jbStansa		Statement
 hi def link jbOption	        Function
-hi def link jbPublic_name        Function
-hi def link jbName        Function
-hi def link jbSynopsis        Function
-hi def link jbLibraries        Function
-hi def link jbWrapped        Function
+hi def link jbPublic_name       Function
+hi def link jbName              Function
+hi def link jbPublic_names      Function
+hi def link jbNames             Function
+hi def link jbSynopsis          Function
+hi def link jbLibraries         Function
+hi def link jbWrapped           Function
 hi def link jbFlags             Function
 hi def link jbModules           Function
 
