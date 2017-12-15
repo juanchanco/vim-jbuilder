@@ -1,1 +1,1 @@
-au BufNewFile,BufRead jbuild			setf Jbuilder
+au BufNewFile,BufRead jbuild			setf jbuilder
