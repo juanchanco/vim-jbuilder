@@ -35,6 +35,8 @@ syn region      jbModeList contained matchgroup=Delimiter start="(" matchgroup=D
 syn keyword     jbStansa contained jbuild_version library executable executables
 syn keyword     jbStansa contained alias ocamllex
 
+syn keyword     jbTodo contained TODO FIXME XXX NOTE
+syn match       jbComment ";.*$" contains=jbTodo
 
 syn region      jbString matchgroup=String start=+"+ skip=+\\"+ end=+"+
 syn match	jbOther	,[a-z!$%&*/:<=>?^_~+@#%-][-a-z!$%&*/:<=>?^_~0-9+.@#%]*,
@@ -106,6 +108,8 @@ hi def link jbNames             Function
 hi def link jbSynopsis          Function
 hi def link jbBuildOption       Function
 
+hi def link jbTodo              Todo
+hi def link jbComment           Comment
 hi def link jbString		String
 hi def link jbCharacter	        Character
 hi def link jbNumber		Number
